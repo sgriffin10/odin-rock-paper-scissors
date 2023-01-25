@@ -1,14 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
     <title>Rock Paper Scissors</title>
-</head>
-<body>
-
-    <script src="game.js"></script>
-    
-</body>
+    <script src="game.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="title">Welcome to Rock, Paper, Scissors!</h1>
+      <p class="prompt">
+        Think you're smarter than the computer? Let's test it out! <br />
+        First to 5 wins...
+      </p>
+      <div class="btn-list">
+        <button class="rock">Rock</button>
+        <button class="paper">Paper</button>
+        <button class="scissors">Scissors</button>
+      </div>
+      <div class="score">
+        <div class="human">
+            You: 0
+        </div>
+        <div class="computer">
+            Computer: 0
+        </div>
+      </div>
+      <div class="congrats">
+        
+      </div>
+    </div>
+  </body>
 </html>

@@ -1,0 +1,65 @@
+html {
+    background-image: url(https://blog.depositphotos.com/wp-content/uploads/2017/07/Soothing-nature-backgrounds-2.jpg.webp);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    height: 100vh;
+}
+
+button {
+    padding: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    border-radius: 10px;   
+    border: 0;
+    width:100px;
+    font-size: 20px;
+
+}
+
+.title, .prompt, .score, .congrats {
+    color: white;
+}
+
+.title{
+    font-size: 48px;
+    margin: 0;
+}
+
+.prompt{
+    font-size: 20px;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 3vw;
+}
+
+.container {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-list{
+    display: flex;
+    gap: 3vw;
+    margin-bottom: 4vw;
+}
+
+.score, .congrats {
+    display: flex;
+    gap: 100px;
+    font-size: 50px;
+    margin-bottom: 3vw;
+}
+
+.congrats{
+    white-space: pre-wrap;
+    text-align: center;
+}
+
+

@@ -1,15 +1,36 @@
 // console.log("testing2");
 
+const rockBtn = document.querySelector(".rock");
+const paperBtn = document.querySelector(".paper");
+const scissorsBtn = document.querySelector(".scissors");
+
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        if (playerScore !== 5 && computerScore !== 5){
+            let btnType = button.className;
+            console.log(`btnType is ${btnType}`);
+            logic(btnType);
+        }
+        
+    });
+});
+
+
+
 function getComputerChoice(){
     const choices = ['Rock','Paper','Scissors'];
     return choices[Math.floor(Math.random()*choices.length)];
 }
 
 function playRound(playerChoice, computerChoice){
-    console.log(`player choice ${playerChoice} and computer choice ${computerChoice}`);
+    let scoreMessage = `Your choice: ${playerChoice}
+    Computer choice: ${computerChoice}`;
+    displayMessage(scoreMessage);
 
     if (playerChoice === computerChoice){
-        console.log("tie")
+        displayMessage("tie");
         return 0;
     }
 
@@ -30,31 +51,58 @@ function playRound(playerChoice, computerChoice){
 let computerScore = 0;
 let playerScore = 0;
 
-for (let i = 0; i < 6; i++){
-    if (computerScore === 3){
-        console.log(`You lost the game to the computer. The final score was ${printScore()}`);
-        break;
-    } else if (playerScore === 3){
-        console.log(`You won the game!. The final score was ${printScore()}`);
-        break;
+function incrementScoreDisplay(player){
+    const playerType = document.querySelector(player);
+    console.log(`playerType is ${playerType.textContent}`);
+    let textContent = playerType.textContent.trim();
+    // console.log(textContent.length);
+    let displayedScore = textContent.slice(-1);
+    console.log(`displayedScore is ${displayedScore}`);
+    let newContent = textContent.replace(displayedScore, Number(displayedScore) + 1);
+    playerType.textContent = newContent;
+}
+
+function logic(playerChoice){
+    let computerChoice = getComputerChoice().toLowerCase();
+    let winner = playRound(playerChoice,computerChoice);
+    if (winner === 0){
+        console.log("The result was a tie! Please choose again");
     } else {
-        const choices = getSelections();
-        let computerChoice = choices[0];
-        let playerChoice = choices[1];
-        let winner = playRound(playerChoice,computerChoice);
-        while (winner === 0){
-            const choices = getSelections();
-            let computerChoice = choices[0];
-            let playerChoice = choices[1];
-            winner = playRound(playerChoice,computerChoice);
-        };
         if (winner === 1){
             playerScore ++;
+            incrementScoreDisplay(".human");
+            if (playerScore === 5){
+                winnerWinnerChickenDinner(1);
+            }
         } else {
             computerScore ++;
+            incrementScoreDisplay(".computer");
+            if (computerScore === 5){
+                winnerWinnerChickenDinner(0);
+            }
+        }
+
+        console.log(printScore());
+
         }
     }
-    console.log(printScore());
+
+function displayMessage(message){
+    const displayBox = document.querySelector(".congrats");
+    displayBox.textContent = message;
+}
+
+function winnerWinnerChickenDinner(winner){
+    if (winner === 0){
+        console.log("The computer won! Wow you're not so smart after all...");
+        displayMessage("The computer won! Wow you're not so smart after all...");
+    } else {
+        console.log("Congratulations you won! You've proved yourself worthy!");
+        displayMessage("Congratulations you won! You've proved yourself worthy!");
+    }
+    // playerScore = 0;
+    // computerScore = 0;
+
 }
 
 function getSelections(){
